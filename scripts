@@ -1,0 +1,23 @@
+Sur machine virtuelle, ajouter un disque /dev/sdb
+sudo fdisk /dev/sdb
+
+Créer les partitions suivantes
+
+Périphérique Amorçage  Début         Fin      Blocs    Id. Système
+/dev/sdb1            2048    10487807     5242880   83  Linux
+/dev/sdb2        10487808    14682111     2097152   83  Linux
+
+sdb1 --> /root
+sdb2 --> swap
+
+// Créer les systèmes de fichier
+sudo mkfs -v -t ext4 /dev/sdb1
+sudo mkswap /dev/sdb2
+
+// Monter les partitions
+export LFS=/mnt/lfs
+sudo mkdir -pv $LFS
+sudo mount -v -t ext4 /dev/sdb1 $LFS
+
+// Activer le swap
+sudo /sbin/swapon -v /dev/sdb2
