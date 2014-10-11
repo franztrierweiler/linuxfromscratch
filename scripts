@@ -21,3 +21,8 @@ sudo mount -v -t ext4 /dev/sdb1 $LFS
 
 // Activer le swap
 sudo /sbin/swapon -v /dev/sdb2
+
+// Créer le répertoire pour les sources
+mkdir -v $LFS/sources
+
+
