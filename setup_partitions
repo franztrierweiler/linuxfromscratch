@@ -1,0 +1,6 @@
+#!/bin/bash
+source globals
+echo "========================================================================"
+echo "Phase 1: Création et formatage des partitions"
+echo "========================================================================"
+sudo fdisk -l /dev/sdb
