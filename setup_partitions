@@ -6,4 +6,3 @@ echo "========================================================================"
 sudo fdisk -l /dev/sdb
 
 echo "Trouver un moyen ici d'automatiser la création des partitions"
-
