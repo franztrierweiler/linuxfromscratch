@@ -11,3 +11,7 @@ do
 	wget -P $LFS/sources $i
 done
 
+for i in ${PATCH_REPO[*]}
+do
+	wget -P $LFS/sources $i
+done

@@ -1,0 +1,14 @@
+#!/bin/bash
+source globals
+echo "========================================================================"
+echo "Phase 5: Compilation des paquetages"
+echo "========================================================================"
+
+echo -n
+echo "() ====> Compilation de binutils"
+echo -n
+
+echo "La documentation binutils recommande que ce paquetage soit compilé hors"
+echo "des sources"
+mkdir -v ../binutils-build
+cd ../binutils-build

@@ -1,9 +1,13 @@
 #!/bin/bash
 source globals
 echo "========================================================================"
-echo "Phase 1: Création et formatage des partitions"
+echo "Phase 4: Décompression des paquetages"
 echo "========================================================================"
-sudo fdisk -l /dev/sdb
-
-echo "Trouver un moyen ici d'automatiser la création des partitions"
-
+echo -n
+echo $LFS_SOURCES
+cd $LFS_SOURCES
+for i in *.xz *.gz *.bz2
+do
+	echo "() ---> Paquetage traité: $i"
+	tar -xvf $LFS/sources/$i
+done
