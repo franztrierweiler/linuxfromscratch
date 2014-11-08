@@ -9,6 +9,10 @@ echo "() ====> Compilation de binutils"
 echo -n
 
 echo "La documentation binutils recommande que ce paquetage soit compilé hors"
-echo "des sources"
+echo "du répertoire sources"
 mkdir -v ../binutils-build
 cd ../binutils-build
+
+time {
+	ls -al
+}
