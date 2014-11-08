@@ -1,11 +1,16 @@
 #!/bin/bash
+set -u
+set -e
 source globals
+
 echo "========================================================================"
 echo "Phase 4: Décompression des paquetages"
 echo "========================================================================"
 echo -n
+
 echo $LFS_SOURCES
 cd $LFS_SOURCES
+
 for i in *.xz *.gz *.bz2
 do
 	echo "() ---> Paquetage traité: $i"

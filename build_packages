@@ -1,4 +1,6 @@
 #!/bin/bash
+set -u
+set -e
 source globals
 echo "========================================================================"
 echo "Phase 5: Compilation des paquetages"
@@ -10,9 +12,16 @@ echo -n
 
 echo "La documentation binutils recommande que ce paquetage soit compilé hors"
 echo "du répertoire sources"
+cd $LFS_SOURCE
 mkdir -v ../binutils-build
 cd ../binutils-build
+					
+../binutils-2.24/configure 	\
+--prefix=/tools				\
+--with-sysroot=$LFS			\
+--with-lib-path=/tools/lib	\
+--target=$LFS_TGT			\
+--disable-nls				\
+--disable-werror			\
 
-time {
-	ls -al
-}
+echo -n

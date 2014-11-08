@@ -1,4 +1,6 @@
 #!/bin/bash
+set -u
+set -e
 source globals
 source source_repo
 echo "========================================================================"
@@ -6,6 +8,7 @@ echo "Phase 2: Téléchargement et build des binaires de base"
 echo "Téléchargement dans $LFS"
 echo "========================================================================"
 
+mkdir $LFS_SOURCES
 for i in ${SOURCE_REPO[*]}
 do
 	wget -P $LFS/sources $i
