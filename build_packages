@@ -12,16 +12,18 @@ echo -n
 
 echo "La documentation binutils recommande que ce paquetage soit compilé hors"
 echo "du répertoire sources"
-cd $LFS_SOURCE
-mkdir -v ../binutils-build
-cd ../binutils-build
-					
-../binutils-2.24/configure 	\
---prefix=/tools				\
---with-sysroot=$LFS			\
---with-lib-path=/tools/lib	\
---target=$LFS_TGT			\
---disable-nls				\
---disable-werror			\
+cd $LFS_SOURCES
+mkdir -v $LFS_SOURCES/binutils-build
+cd $LFS_SOURCES/binutils-build
 
-echo -n
+time (							
+../binutils-2.24/configure 		\
+	--prefix=/tools				\
+	--with-sysroot=$LFS			\
+	--with-lib-path=/tools/lib	\
+	--target=$LFS_TGT			\
+	--disable-nls				\
+	--disable-werror			\
+	&& make && make install
+)
+
