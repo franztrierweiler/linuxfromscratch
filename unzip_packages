@@ -4,7 +4,7 @@ set -e
 source globals
 
 echo "========================================================================"
-echo "Phase 4: Décompression des paquetages"
+echo "Phase 3: Décompression des paquetages"
 echo "========================================================================"
 echo -n
 
