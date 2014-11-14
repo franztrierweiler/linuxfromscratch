@@ -6,24 +6,42 @@ echo "========================================================================"
 echo "Phase 5: Compilation des paquetages"
 echo "========================================================================"
 
-echo -n
-echo "() ====> Compilation de binutils"
-echo -n
+function build_binutils
+{
+	echo -n
+	echo "() ====> Compilation de binutils"
+	echo -n
 
-echo "La documentation binutils recommande que ce paquetage soit compilé hors"
-echo "du répertoire sources"
-cd $LFS_SOURCES
-mkdir -v $LFS_SOURCES/binutils-build
-cd $LFS_SOURCES/binutils-build
+	echo "La documentation binutils recommande que ce paquetage soit compilé hors"
+	echo "du répertoire sources"
+	cd $LFS_SOURCES
+	mkdir -v $LFS_SOURCES/binutils-build
+	cd $LFS_SOURCES/binutils-build
 
-time (							
-../binutils-2.24/configure 		\
-	--prefix=/tools				\
-	--with-sysroot=$LFS			\
-	--with-lib-path=/tools/lib	\
-	--target=$LFS_TGT			\
-	--disable-nls				\
-	--disable-werror			\
-	&& make && make install
-)
+	time (							
+	../binutils-2.24/configure 		\
+		--prefix=/tools				\
+		--with-sysroot=$LFS			\
+		--with-lib-path=/tools/lib	\
+		--target=$LFS_TGT			\
+		--disable-nls				\
+		--disable-werror			\
+		&& make && make install
+	)
+}
 
+function build_gcc
+{
+	echo -n
+	echo "() ====> Compilation de gcc"
+	echo -n
+	
+	echo "gcc a besoin des paquetages gmp, mpfr et mpc."
+	echo "Ces paquetages sont compilés ici."
+	mv -v mpfr-3.1.2 mpfr
+	mv -v gmp-6.0.0 gmp
+	mv -v mpc-1.0.2 mpc
+}
+
+#build_binutils
+build_gcc
